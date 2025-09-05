@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{newcomputermodern} % for font
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% Title
+\title{\textit{Negative Hypergeometric}}
+\author{\textit{Yehor Korotenko}\\ \href{https://dobbikov.com}{dobbikov.com}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Problem Setup}
+Let's consider the following case: there are $N$ balls among which there are $G$
+red ones and $N - G$ blue ones. We introduce $T$ as the number of balls we need
+to take without replacement in order to get $r$ red ones. What is the probability 
+that the number of balls $T$ is $n$?
+
+Our goal is to find $P(T = n)$.
+
+\section*{PMF}
+\begin{itemize}
+    \item We have an urn with $N$ balls, with $G$ red ones.
+    \item $T = n$ means that on the $n$-th draw we took exactly the $r$-th red ball.
+\end{itemize}
+
+\subsubsection*{Number of ways to get $r$ red balls among $n$ draws}
+\begin{itemize}
+    \item Among the first $n-1$ draws we took exactly $r-1$ red balls. The number of ways 
+    to put $r-1$ red balls among $n-1$ draws is $\binom{n-1}{r-1}$.
+    \item The $n$-th draw is our $r$-th red ball.
+    \item So we are left to count the number of ways to place $G-r$ remaining red balls among 
+    the $N-n$ remaining balls in the urn. Why? \footnote{We have to count all the ways of placing 
+    \emph{all} the balls. To make an analogy, imagine the case when we shuffle a deck of cards and take 
+    $n$ first cards. Even though we don't care about the rest of the deck, we have to count the 
+    number of ways that the cards in the deck have positions in order to get the true probability.}
+\end{itemize}
+
+\subsubsection*{All possible outcomes}
+The number of possible outcomes is the number of ways to put $G$ red balls among all the $N$ balls:
+\[
+\binom{N}{G}
+\]
+
+\subsubsection*{Final probability}
+Combining everything we get:
+\begin{equation}
+P(T = n) = \frac{\binom{n-1}{r-1}\binom{N-n}{G-r}}{\binom{N}{G}}
+\end{equation}
+
+\section*{Expectation}
+\begin{equation}
+\mathbb{E}[T] = \frac{r (N+1)}{G+1}
+\end{equation}
+
+\subsubsection*{Intuition}
+Imagine you line up all $N$ draw positions in a row:
+\[
+1,2,3,\dots,N
+\]
+
+Now you drop the $G$ successes randomly into this line.  
+Think of it like splitting the line into $G+1$ chunks:
+\begin{itemize}
+    \item before the 1st success,
+    \item between 1st and 2nd success,
+    \item \dots,
+    \item after the last success.
+\end{itemize}
+
+On average, each chunk has length about $(N+1)/(G+1)$.  
+So the $r$-th success will typically sit at the end of the $r$-th chunk.
+
+That’s all the formula says:  
+\textit{“the $r$-th success is expected at about $r$ times the average spacing between successes.”}
+
+\section*{Variance}
+\begin{equation}
+\mathrm{Var}(T) = \frac{r(G-r+1)(N+1)(N-G)}{(G+1)^2(G+2)}
+\end{equation}
+
+Just the formula of variance --- no intuition here.
+
+\end{document}
+
