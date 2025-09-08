@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{newcomputermodern} % for font
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% Title
+\title{Probability Generating Functions = Fonctions Génératrices}
+\author{Yehor Korotenko}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+Formula for the PGF:
+
+Let $X$ be a random variable that takes values in  $\N$. For $s \in [0, 1[$ 
+$$g_X(s) = \sum_{n \ge 0}^{} P(X = n)s^n$$
+
+Why bothering?
+
+\begin{itemize}
+    \item $g_X(0) = P(X = 0)$
+    \item $\frac{g_X^{(n)}}{n!}(0) = P(X = n)$
+    \item $g_X(1) = \sum_{n \ge 0}^{} P(X = n) = 1$
+\end{itemize}
+
+That is why it \textit{describes} a distribution.
+
+\end{document}
+
