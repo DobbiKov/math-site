@@ -1,0 +1,232 @@
+\documentclass[12pt]{article}
+
+% PACKAGES
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+
+% DOCUMENT CONFIGURATION
+\geometry{a4paper, margin=1in}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Apprentissage Supervisé}
+\lhead{\leftmark}
+\cfoot{\thepage}
+
+% TITLE
+\title{\textbf{Cours sur l'Apprentissage Supervisé :\\ De la Régression Linéaire aux SVMs}}
+\author{Basé sur une présentation par un instructeur anonyme}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+\section{Introduction à l'Apprentissage Supervisé}
+L'apprentissage supervisé est une branche de l'intelligence artificielle et de l'apprentissage automatique où l'on cherche à construire un modèle prédictif à partir de données d'entraînement. Chaque point de données dans l'ensemble d'entraînement est une paire constituée d'un objet en entrée (généralement un vecteur de caractéristiques, ou \textit{features}) et d'une valeur de sortie désirée.
+
+L'objectif de l'algorithme d'apprentissage supervisé est d'apprendre une fonction de mappage qui peut prédire la valeur de sortie pour de nouvelles données invisibles. On distingue principalement deux types de problèmes en apprentissage supervisé :
+\begin{itemize}
+    \item \textbf{La Régression :} Prédire une valeur de sortie continue. Par exemple, prédire le prix d'une maison en fonction de sa superficie.
+    \item \textbf{La Classification :} Prédire une étiquette de sortie discrète (une classe). Par exemple, déterminer si un e-mail est un spam ou non.
+\end{itemize}
+Ce cours explorera ces deux facettes, en commençant par la régression linéaire, puis en se concentrant sur les classifieurs linéaires comme le Perceptron et les Machines à Vecteurs de Support (SVM).
+
+\section{Partie I : Régression}
+
+\subsection{Régression Linéaire}
+La régression linéaire est l'une des techniques les plus simples et les plus fondamentales en apprentissage supervisé. L'objectif est de modéliser une relation linéaire entre une variable de sortie (dépendante) et une ou plusieurs variables d'entrée (indépendantes). Le modèle cherche à trouver une ligne (ou un hyperplan dans des dimensions supérieures) qui s'ajuste au mieux aux données.
+
+\subsection{Optimisation avec la Descente de Gradient}
+Pour trouver la "meilleure" ligne, nous devons minimiser une fonction de coût (ou de perte), qui mesure à quel point les prédictions du modèle sont erronées. Une fonction de coût courante est l'erreur quadratique moyenne. La descente de gradient est un algorithme d'optimisation itératif utilisé pour trouver le minimum de cette fonction.
+
+L'idée est de mettre à jour les paramètres du modèle (notés par le vecteur $\vec{\theta}$) dans la direction opposée au gradient de la fonction de coût $J(\theta, X)$. La formule de mise à jour est :
+\begin{equation}
+\vec{\theta} \leftarrow \vec{\theta} - \eta \nabla_{\vec{\theta}} J(\theta, X)
+\end{equation}
+où :
+\begin{itemize}
+    \item $\vec{\theta}$ contient les paramètres du modèle (ordonnée à l'origine et pentes).
+    \item $\eta$ (eta) est le \textbf{taux d'apprentissage} (\textit{learning rate}), qui contrôle la taille des pas que nous faisons.
+    \item $\nabla_{\vec{\theta}} J$ est le gradient de la fonction de coût par rapport aux paramètres.
+\end{itemize}
+
+\subsection{L'Impact du Taux d'Apprentissage ($\eta$)}
+Le choix de $\eta$ est crucial pour la convergence de l'algorithme.
+\begin{itemize}
+    \item \textbf{Si $\eta$ est trop petit}, la convergence sera très lente.
+    \item \textbf{Si $\eta$ est trop grand}, l'algorithme peut dépasser le minimum et même diverger.
+    \item \textbf{Un bon $\eta$} permet une convergence efficace vers le minimum.
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    % NOTE: Save the image from page 1 as 'regression_learning_rates.png'
+    \includegraphics[width=\textwidth]{regression_learning_rates.png}
+    \caption{Illustration de l'effet du taux d'apprentissage ($\eta$) sur la convergence de la régression linéaire. À gauche ($\eta=0.02$), la convergence est lente. Au centre ($\eta=0.1$), la convergence est bonne. À droite ($\eta=0.5$), l'algorithme dépasse la solution optimale.}
+    \label{fig:learning_rates}
+\end{figure}
+
+\newpage
+\section{Partie II : Classifieurs Linéaires}
+Nous passons maintenant de la prédiction de valeurs continues (régression) à la prédiction d'étiquettes discrètes (classification). Un classifieur linéaire atteint cet objectif en trouvant une ligne ou un hyperplan qui sépare les différentes classes dans l'espace des caractéristiques.
+
+\subsection{Une Approche Intuitive : Classer des Espèces de Poissons}
+Imaginons que nous ayons un ensemble de données sur deux espèces de poissons, où chaque poisson est décrit par deux caractéristiques : sa longueur et sa clarté. L'objectif est de trouver une règle pour les distinguer. Un classifieur linéaire chercherait une ligne droite qui sépare les deux nuages de points.
+
+\begin{figure}[h!]
+    \centering
+    % NOTE: Save the image from page 3 as 'fish_classification.png'
+    \includegraphics[width=0.7\textwidth]{fish_classification.png}
+    \caption{Un nuage de points montrant deux classes (espèces de poissons) basées sur la longueur et la clarté. Un classifieur linéaire vise à trouver une "séparatrice" linéaire comme la ligne noire.}
+    \label{fig:fish}
+\end{figure}
+
+La question fondamentale est : \textbf{Comment trouver cette séparatrice ?}
+
+\subsection{Le Perceptron}
+
+\subsubsection{Contexte Historique et Concept de Base}
+Le Perceptron, inventé par Frank Rosenblatt en 1957, est l'un des plus anciens et des plus simples algorithmes de classification binaire. C'est le précurseur des réseaux de neurones modernes.
+
+L'idée globale est remarquablement simple :
+\begin{enumerate}
+    \item \textbf{Démarrage aléatoire :} On commence avec une ligne (hyperplan) de séparation placée aléatoirement.
+    \item \textbf{Mises à jour correctives :} On parcourt les points de données un par un. Si un point est mal classé, on ajuste la ligne de séparation pour qu'elle se rapproche de la classification correcte pour ce point.
+\end{enumerate}
+
+\subsubsection{Formalisation du Classifieur Linéaire}
+Formalisons ce processus :
+\begin{itemize}
+    \item \textbf{Entrées :} Un ensemble de données $X = \{\vec{x}^{(n)}\}_{n=1,...,N}$, où chaque $\vec{x}^{(n)}$ est un vecteur de $D$ caractéristiques.
+    \item \textbf{Sorties :} Des étiquettes connues $t^{(n)} \in \{+1, -1\}$ pour chaque entrée (apprentissage supervisé).
+    \item \textbf{Modèle :} La fonction discriminante est une fonction linéaire des entrées, définissant la distance signée d'un point à l'hyperplan : 
+    \begin{equation}
+    f_{\Theta}(\vec{x}^{(n)}) = \vec{w} \cdot \vec{x}^{(n)} + b
+    \end{equation}
+    Ici, $\vec{w}$ est un vecteur de poids (normal à l'hyperplan) et $b$ est le biais (qui contrôle la position de l'hyperplan).
+    \item \textbf{Prédiction :} La classe prédite $\hat{y}$ est simplement le signe de cette distance :
+    \begin{equation}
+    \hat{y}^{(n)} = \text{signe}(\vec{w} \cdot \vec{x}^{(n)} + b)
+    \end{equation}
+\end{itemize}
+
+\subsubsection{Intuitions derrière le Processus d'Apprentissage}
+L'apprentissage consiste à trouver les bons $\vec{w}$ et $b$.
+\begin{itemize}
+    \item Si un point est bien classé, on ne fait rien.
+    \item Si un point est mal classé, c'est une erreur. L'algorithme applique une "pénalité" en ajustant les poids pour corriger cette erreur.
+    \item On pourrait définir une fonction de coût (ou d'erreur) $J_1$ comme le "nombre de points mal classés". Cependant, cette fonction est difficile à optimiser car elle n'est pas différentiable.
+    \item Une meilleure fonction de coût, $J_2$, est la "somme des distances au plan des points mal classés". C'est cette idée qui sous-tend l'algorithme du Perceptron.
+\end{itemize}
+
+\subsubsection{Le Perceptron comme Problème d'Optimisation}
+L'algorithme du Perceptron peut être vu comme la minimisation d'une fonction de coût spécifique, souvent appelée le \textbf{critère du Perceptron} (ou Hinge Loss) :
+\begin{equation}
+J(\Theta, X, T) = \sum_{n \in \mathcal{M}} -(\vec{w} \cdot \vec{x}_n)t_n
+\end{equation}
+où $\mathcal{M}$ est l'ensemble de tous les points mal classés. La fonction de coût est la somme des "scores" des points mal classés, où un score négatif indique une classification correcte. Minimiser $J$ revient donc à réduire le nombre d'erreurs et leur ampleur.
+
+En appliquant la descente de gradient sur cette fonction, on obtient la règle de mise à jour du Perceptron. Pour un seul point mal classé $(\vec{x}_n, t_n)$:
+\begin{equation}
+\vec{\theta} \leftarrow \vec{\theta} + \eta \cdot \vec{x}_n t_n
+\end{equation}
+Cette mise à jour "pousse" l'hyperplan à se déplacer pour mieux classer le point $\vec{x}_n$.
+
+\subsection{Stratégies d'Optimisation}
+La manière dont nous utilisons les données pour calculer le gradient et mettre à jour les poids définit la stratégie d'optimisation.
+
+\subsubsection{Batch vs. Online Learning}
+\begin{itemize}
+    \item \textbf{Apprentissage "Online" (en ligne) :} Les poids sont mis à jour après la présentation de chaque exemple. C'est l'approche historique du Perceptron.
+    \item \textbf{Apprentissage "Batch" (par lot) :} Le gradient est calculé en utilisant la totalité de l'ensemble de données avant de faire une seule mise à jour. C'est la descente de gradient "classique".
+\end{itemize}
+
+\subsubsection{Stochastic et Mini-Batch Gradient Descent}
+\begin{itemize}
+    \item \textbf{Stochastic Gradient Descent (SGD) :} C'est une version moderne de l'apprentissage en ligne. À chaque étape, un seul exemple est choisi \textit{au hasard} dans l'ensemble de données pour calculer le gradient et mettre à jour les poids. C'est rapide mais bruyant. ($m=1$).
+    \item \textbf{Mini-Batch Gradient Descent :} Un compromis entre le Batch et le SGD. À chaque étape, on utilise un petit sous-ensemble aléatoire (un "mini-lot") des données ($1 < m < N$). C'est la méthode la plus utilisée en pratique aujourd'hui, car elle combine la rapidité du SGD avec une convergence plus stable.
+\end{itemize}
+
+\subsubsection{Visualisation des Chemins d'Optimisation}
+Le choix de la stratégie d'optimisation influence la manière dont les paramètres convergent vers la solution optimale.
+
+\begin{figure}[h!]
+    \centering
+    % NOTE: Save the image from page 11 as 'optim_strategies.png'
+    \includegraphics[width=0.8\textwidth]{optim_strategies.png}
+    \caption{Chemins de convergence des paramètres pour différentes stratégies. \textbf{Batch (bleu)} : chemin lisse et direct. \textbf{Mini-batch (vert)} : chemin moins bruyant que le SGD. \textbf{Stochastic (rouge)} : chemin très bruyant mais qui converge néanmoins vers la bonne région.}
+    \label{fig:optim}
+\end{figure}
+
+\subsection{Le Défi des Données Non-Séparables}
+Le théorème de convergence du Perceptron garantit que si les données sont linéairement séparables, l'algorithme trouvera une solution en un nombre fini d'itérations. Cependant, les données réelles sont rarement "propres" et parfaitement séparables.
+
+En pratique, même si quelques points sont mal classés, le Perceptron trouve souvent une solution "raisonnable" qui sépare la majorité des données correctement.
+
+\begin{figure}[h!]
+    \centering
+    % NOTE: Save the image from page 13 as 'non_separable.png'
+    \includegraphics[width=0.7\textwidth]{non_separable.png}
+    \caption{Un ensemble de données plus réaliste où les classes se chevauchent. Il n'existe pas de ligne parfaite, mais le Perceptron peut trouver une bonne approximation.}
+    \label{fig:non_separable}
+\end{figure}
+
+\newpage
+\section{Partie III : Trouver le Séparateur Optimal : Machines à Vecteurs de Support (SVM)}
+Le Perceptron s'arrête dès qu'il trouve \textit{une} solution qui sépare les données (s'il en existe une). Mais parmi une infinité de solutions possibles, laquelle est la \textit{meilleure} ?
+
+\subsection{Le Principe de la Maximisation de la Marge}
+Les Machines à Vecteurs de Support (SVM) répondent à cette question en cherchant l'hyperplan qui maximise la \textbf{marge}, c'est-à-dire la distance entre l'hyperplan et les points les plus proches de chaque classe. L'intuition est qu'un séparateur avec une grande marge est plus robuste et généralisera mieux aux nouvelles données.
+
+\subsection{Le Rôle des Vecteurs de Support}
+Seuls les points qui se trouvent sur le bord de la marge influencent la position de l'hyperplan optimal. Ces points sont appelés les \textbf{vecteurs de support}. Tous les autres points pourraient être déplacés ou supprimés sans affecter la solution.
+
+\begin{figure}[h!]
+    \centering
+    % NOTE: Save the image from page 14 as 'svm.png'
+    \includegraphics[width=\textwidth]{svm.png}
+    \caption{À gauche, un classifieur SVM avec une marge maximale. Les points cerclés avec des croix rouges sont les vecteurs de support. À droite, une illustration du concept de marge. Les points mal classés (à l'intérieur de la marge ou du mauvais côté) sont tolérés en payant un "prix" dans la fonction de coût.}
+    \label{fig:svm}
+\end{figure}
+
+Les SVMs peuvent également gérer les données non-linéairement séparables en autorisant certains points à violer la marge (concept de "marge souple").
+
+\section{Conclusion}
+Ce cours a couvert les concepts fondamentaux de la régression et de la classification linéaires en apprentissage supervisé. Nous avons commencé par la régression linéaire optimisée par descente de gradient. Ensuite, nous avons exploré le Perceptron, l'un des premiers algorithmes de classification, en le considérant sous l'angle de l'optimisation. Nous avons discuté des différentes stratégies d'optimisation (Batch, Mini-Batch, SGD) qui sont essentielles en apprentissage automatique moderne. Enfin, nous avons introduit les SVMs comme une méthode puissante pour trouver le meilleur séparateur linéaire en maximisant la marge.
+
+\section{Références et Lectures Complémentaires}
+
+\begin{itemize}
+    \item \textbf{Documentation Scikit-Learn sur les SVMs :}
+    \href{https://scikit-learn.org/stable/modules/svm.html}{https://scikit-learn.org/stable/modules/svm.html}
+
+    \item \textbf{Livre de référence :} Bishop, C. M. (2006). \textit{Pattern Recognition and Machine Learning}. Springer. (Voir Chapitre 6, pp. 325-345 pour les SVMs).
+
+    \item \textbf{Implémentations pratiques en Scikit-Learn :}
+    \begin{itemize}
+        \item Classification : \href{https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html}{LinearSVC}, \href{https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html}{SVC}
+        \item Régression : \href{https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html}{SVR}
+    \end{itemize}
+\end{itemize}
+
+\end{document}
