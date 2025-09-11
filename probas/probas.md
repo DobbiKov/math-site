@@ -1,1 +1,2 @@
-# Entry to the probability section
+# Probability theory
+Entry to the probability section
