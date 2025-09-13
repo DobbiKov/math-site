@@ -13,7 +13,7 @@ project:
       children:
         - file: probas/hypergeometric.tex
         - file: probas/pgf.tex
-    - title: IAS
+    - file: statistical_learning/entry.md
       children: 
         - file: statistical_learning/lecture2.tex
   # To autogenerate a Table of Contents, run "myst init --write-toc"
