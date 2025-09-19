@@ -13,6 +13,8 @@ project:
       children:
         - file: probas/neg_hypergeometric.tex
         - file: probas/pgf.tex
+        - file: probas/tds.md
+        - file: probas/resources.md
     - file: statistical_learning/entry.md
       children: 
         - file: statistical_learning/lecture2.tex
