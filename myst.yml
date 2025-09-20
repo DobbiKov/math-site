@@ -15,6 +15,9 @@ project:
         - file: probas/pgf.tex
         - file: probas/tds.md
         - file: probas/resources.md
+        - title: TDS
+          children:
+            - file: probas/tds/td3.tex
     - file: statistical_learning/entry.md
       children: 
         - file: statistical_learning/lecture2.tex
