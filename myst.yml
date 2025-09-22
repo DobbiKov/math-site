@@ -26,6 +26,11 @@ project:
     - title: Compilation
       children:
         - file: compilation/assembly-ops.md
+    - title: Archives
+      children:
+        - title: Analysis
+          children: 
+            - file: archives/analysis/resources.md
   # To autogenerate a Table of Contents, run "myst init --write-toc"
 site:
   template: book-theme
