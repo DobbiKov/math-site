@@ -15,9 +15,11 @@ project:
         - file: probas/pgf.tex
         - file: probas/tds.md
         - file: probas/resources.md
+        - file: probas/montrer-qqch-de-probabilite-1.md
         - title: TDS
           children:
             - file: probas/tds/td3.tex
+            - file: probas/tds/td4.tex
     - file: statistical_learning/entry.md
       children: 
         - file: statistical_learning/lecture2.tex
