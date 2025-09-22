@@ -1,0 +1,149 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\begin{document}
+
+\section*{Exercice 1 : La méthode probabiliste.}
+
+Notons $|\cdot|_2$ est la norme euclidienne usuelle dans $\mathbb{R}^d$.  
+Soient $u_1, \ldots, u_n$ des vecteurs de $\mathbb{R}^d$ de norme $1$. Montrer qu’il existe $\epsilon_1, \ldots, \epsilon_n$ dans $\{-1,+1\}$ tels que
+\[
+|\epsilon_1 u_1 + \cdots + \epsilon_n u_n|_2 \leq \sqrt{n}.
+\]
+
+\section*{Exercice 2 : Tribus engendrées par des v.a.}
+
+Expliciter $\sigma(X)$ et la loi de $X$ dans les cas suivants :  
+
+\subsection*{a)} 
+$(\Omega,\mathcal{F},P)$ est un espace de probabilité, $A,B$ sont deux événements de $\mathcal{F}$, $a,b$ deux nombres réels et
+\[
+\forall \omega \in \Omega \quad X(\omega) = a 1_A(\omega) + b 1_B(\omega).
+\]
+
+\subsection*{b)} 
+$(\Omega,\mathcal{F},P) = ([0,1],\mathcal{B}([0,1]),\lambda)$ et
+\[
+\forall \omega \in [0,1] \quad 
+X(\omega) = 
+\begin{cases}
+2\omega & \text{si } 0 \leq \omega \leq 1/2, \\
+1 & \text{si } 1/2 \leq \omega \leq 1.
+\end{cases}
+\]
+
+\subsection*{c)} 
+$(\Omega,\mathcal{F},P) = ([-1,1],\mathcal{B}([-1,1]),\lambda/2)$ et
+\[
+\forall \omega \in [-1,1] \quad X(\omega) = \omega^2.
+\]
+
+\section*{Exercice 3 : Premiers calculs gaussiens.}
+
+\subsection*{0)} Rappeler la densité de la loi gaussienne $\mathcal{N}(m,\sigma^2)$.  
+
+Soit $X$ une v.a. de loi $\mathcal{N}(0,1)$.  
+
+\subsection*{1)} Quelle est la moyenne de $X$ ? Et sa variance ?  
+
+\subsection*{2a)} Quelle est la loi de $m + \sigma X$ ?  
+
+\subsection*{2b)} En déduire la moyenne et la variance de $\mathcal{N}(m,\sigma^2)$.  
+
+Soit $Y$ une v.a. de loi $\mathcal{N}(0,1)$, indépendante de $X$.  
+
+\subsection*{3)} Calculer la loi de $Z = Y/X$, puis de $1/Z$.  
+
+\subsection*{4)} Soit $R = \sqrt{X^2 + Y^2}$ et $S = X/R$.  
+
+\begin{itemize}
+    \item[a)] Calculer la loi du couple $(R^2,S)$.  
+    \item[b)] En déduire la loi de $R^2$ ainsi que la loi de $S$.  
+\end{itemize}
+
+\subsection*{5)} Soient $U$ et $V$ deux v.a. i.i.d. uniformes sur $[0,1]$.  
+\begin{itemize}
+    \item[a)] Montrer que $\tilde{R} = \sqrt{-2\ln U}$ a même loi que $R$.  
+    \item[b)] Montrer que $(\tilde{X},\tilde{Y}) = (\tilde{R}\cos(2\pi V), \tilde{R}\sin(2\pi V))$ a même loi que $(X,Y)$.  
+    \item[c)] Calculez la loi du couple $(\tilde{X},\tilde{Y})$.  
+\end{itemize}
+
+\section*{Exercice 4 : La loi Beta.}
+
+Soient $a,b > 0$. La loi Gamma $G(a)$ est la loi de densité
+\[
+1_{\{x \geq 0\}} \, \Gamma(a)^{-1} x^{a-1} \exp(-x).
+\]
+
+La loi Beta $\beta(a,b)$ est la loi de densité
+\[
+g_{a,b}(x) = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)} x^{a-1}(1-x)^{b-1} 1_{]0,1[}(x).
+\]
+
+\subsection*{1)} Soient $Y_a$ et $Y_b$ deux variables aléatoires indépendantes, de lois respectives $G(a)$ et $G(b)$. Montrer que $\beta(a,b)$ est la loi de $U = Y_a / (Y_a + Y_b)$.  
+
+\subsection*{2)} Calculer la moyenne et la variance de $U$.  
+
+\section*{Exercice 5 : Une identité entre lois.}
+
+Soit $U$ une variable aléatoire de loi $\beta(a,1-a)$, où $a \in ]0,1[$ (la loi Beta est définie dans l'exercice précédent).  
+Soit $Z$ une variable aléatoire de loi exponentielle $\text{Exp}(1)$, et qui est indépendante de $U$.  
+
+Montrer que $X = UZ$ suit la loi Gamma $\mathcal{G}(a)$.
+
+\bigskip
+
+\section*{Exercice 6 : Étude d’un vecteur aléatoire.}
+
+Soit $Z = (X,Y)$ un vecteur aléatoire de $\mathbb{R}^2$.  
+
+\begin{enumerate}
+    \item[0)] Rappeler ce qu’est la loi de $Z$.
+    \item On suppose que la loi de $Z$ admet comme densité par rapport à la mesure de Lebesgue de $\mathbb{R}^2$ la fonction
+    \[
+        f(x,y) = \frac{4}{\pi \sigma^2} \exp\!\left(-\frac{x^2+y^2}{\sigma^2}\right)\mathbf{1}_{\{x \geq |y|\}}
+    \]
+    où $\sigma$ est un paramètre strictement positif.
+    \begin{enumerate}
+        \item[1)] Vérifier que $f$ est bien une densité de probabilité.
+        \item[2)] Les variables $X$ et $Y$ sont-elles indépendantes ?
+        \item[3)] Calculer la loi de $(X-Y, X+Y)$.
+        \item[4)] Montrer que $X-Y$ et $X+Y$ sont indépendantes.
+    \end{enumerate}
+\end{enumerate}
+
+\bigskip
+
+\section*{Exercice 7 : Densité jointe et indépendance.}
+
+Soit $Z = (X,Y)$ un vecteur aléatoire à valeurs dans $\mathbb{R}^2$, admettant une densité 
+$f : \mathbb{R}^2 \to [0,+\infty[$ par rapport à la mesure de Lebesgue, i.e.,
+\[
+\forall A \in \mathcal{B}(\mathbb{R}^2), \quad 
+P\big((X,Y) \in A\big) = \int_A f(x,y)\, dx\,dy.
+\]
+
+Nous définissons les fonctions $f_X$ et $f_Y$ par
+\[
+f_X(x) = \int_{\mathbb{R}} f(x,y)\, dy, 
+\qquad 
+f_Y(y) = \int_{\mathbb{R}} f(x,y)\, dx.
+\]
+
+\begin{enumerate}
+    \item Montrer que la loi marginale de $X$ (respectivement $Y$) admet pour densité $f_X$ (respectivement $f_Y$).
+    \item Rappeler la définition initiale de l’indépendance pour deux v.a. $X$ et $Y$.
+    \item Montrer que, si $X$ et $Y$ sont indépendantes, alors, en dehors d’un ensemble de mesure de Lebesgue nulle, la densité jointe $f(x,y)$ vérifie
+    \[
+    f(x,y) = f_X(x) f_Y(y).
+    \]
+    \item Supposons qu’il existe deux fonctions boréliennes positives $g,h$ telles que
+    \[
+    \forall x,y \in \mathbb{R}, \quad f(x,y) = g(x)h(y).
+    \]
+    Montrer qu’alors $X$ et $Y$ sont indépendantes.
+    \item Donner une caractérisation des lois de vecteurs dans $\mathbb{R}^2$ qui admettent une densité et dont les deux composantes sont indépendantes.
+\end{enumerate}
+
+\end{document}
+
