@@ -21,6 +21,9 @@ project:
     - file: statistical_learning/entry.md
       children: 
         - file: statistical_learning/lecture2.tex
+    - title: Compilation
+      children:
+        - file: compilation/assembly-ops.md
   # To autogenerate a Table of Contents, run "myst init --write-toc"
 site:
   template: book-theme
