@@ -1,0 +1,247 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{color} % For text highlighting if needed
+
+\title{Chapitre 1: Introduction à l'Apprentissage Supervisé et les Classifieurs Linéaires}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction à l'Apprentissage Supervisé}
+L'apprentissage supervisé est une branche fondamentale de l'apprentissage automatique où un algorithme apprend à partir d'un ensemble de données étiquetées. Cela signifie que chaque donnée d'entrée est associée à une sortie correcte. L'objectif est de construire un modèle capable de prédire la sortie pour de nouvelles données non étiquetées. Ce chapitre explorera deux types d'algorithmes supervisés : la régression linéaire et les classifieurs linéaires, en mettant un accent particulier sur le Perceptron et les Support Vector Machines (SVM).
+
+\section{Régression Linéaire par Descente de Gradient}
+La régression linéaire est un algorithme d'apprentissage supervisé utilisé pour prédire une variable de sortie continue. Elle suppose une relation linéaire entre les variables d'entrée et la variable de sortie.
+
+\subsection{Le Modèle de Régression Linéaire}
+Le modèle de régression linéaire cherche à trouver les paramètres (coefficients) d'une droite (ou d'un hyperplan en dimensions supérieures) qui minimise l'erreur entre les prédictions du modèle et les vraies valeurs des données d'entraînement. Pour un modèle simple à une seule variable, cela peut être exprimé comme :
+$$y = \theta_0 + \theta_1 x$$
+où $y$ est la variable de sortie, $x$ la variable d'entrée, $\theta_0$ l'ordonnée à l'origine et $\theta_1$ la pente. En général, pour $D$ variables d'entrée, on a :
+$$h_\theta(\mathbf{x}) = \theta_0 + \theta_1 x_1 + \dots + \theta_D x_D = \mathbf{\theta}^T \mathbf{x}$$
+où $\mathbf{\theta}$ est le vecteur des paramètres et $\mathbf{x}$ est le vecteur des variables d'entrée (avec $x_0=1$ pour le terme de biais).
+
+\subsection{La Fonction de Coût}
+Pour évaluer la performance de notre modèle, nous utilisons une fonction de coût (ou fonction objectif) qui mesure la différence entre les prédictions du modèle et les vraies valeurs. Pour la régression linéaire, la fonction de coût du carré des erreurs (Mean Squared Error - MSE) est couramment utilisée :
+$$J(\mathbf{\theta}) = \frac{1}{2m} \sum_{i=1}^m (h_\theta(\mathbf{x}^{(i)}) - y^{(i)})^2$$
+où $m$ est le nombre d'exemples d'entraînement, $h_\theta(\mathbf{x}^{(i)})$ est la prédiction du modèle pour l'exemple $i$, et $y^{(i)}$ est la vraie valeur pour l'exemple $i$. Le facteur $\frac{1}{2}$ est inclus pour simplifier le calcul de la dérivée.
+
+\subsection{Descente de Gradient}
+La descente de gradient est un algorithme d'optimisation itératif utilisé pour trouver les valeurs des paramètres $\mathbf{\theta}$ qui minimisent la fonction de coût $J(\mathbf{\theta})$. L'idée est de se déplacer dans la direction opposée au gradient de la fonction de coût, car c'est la direction de la plus forte diminution.
+
+L'équation de mise à jour des paramètres est donnée par :
+$$\theta_j := \theta_j - \eta \frac{\partial}{\partial \theta_j} J(\mathbf{\theta})$$
+où $\eta$ est le taux d'apprentissage (learning rate), un hyperparamètre qui contrôle la taille des pas effectués à chaque itération.
+
+Pour la régression linéaire, les dérivées partielles de la fonction de coût sont :
+$$\frac{\partial}{\partial \theta_0} J(\mathbf{\theta}) = \frac{1}{m} \sum_{i=1}^m (h_\theta(\mathbf{x}^{(i)}) - y^{(i)})$$
+$$\frac{\partial}{\partial \theta_j} J(\mathbf{\theta}) = \frac{1}{m} \sum_{i=1}^m (h_\theta(\mathbf{x}^{(i)}) - y^{(i)}) x_j^{(i)} \quad \text{pour } j=1, \dots, D$$
+
+Les mises à jour simultanées pour chaque paramètre sont :
+$$\theta_0 := \theta_0 - \eta \frac{1}{m} \sum_{i=1}^m (h_\theta(\mathbf{x}^{(i)}) - y^{(i)})$$
+$$\theta_j := \theta_j - \eta \frac{1}{m} \sum_{i=1}^m (h_\theta(\mathbf{x}^{(i)}) - y^{(i)}) x_j^{(i)} \quad \text{pour } j=1, \dots, D$$
+
+La page 1 du PDF illustre l'effet de différents taux d'apprentissage ($\eta$) sur la convergence de la descente de gradient.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{example-image-1} % This will be replaced by the image
+    \caption{Régression Linéaire par Descente de Gradient avec différents taux d'apprentissage. On observe que pour $\eta=0.02$, la convergence est lente, pour $\eta=0.1$ elle est plus rapide, et pour $\eta=0.5$ (trop élevé), l'algorithme diverge.}
+\end{figure}
+\textbf{Interprétation de la figure (page 1):}
+\begin{itemize}
+    \item \textbf{$\eta = 0.02$ (gauche) :} Le taux d'apprentissage est faible. L'algorithme prend de petits pas et converge lentement vers la solution optimale. Les lignes de régression successives (en bleu) s'ajustent progressivement aux données, mais il faut de nombreuses itérations.
+    \item \textbf{$\eta = 0.1$ (milieu) :} Le taux d'apprentissage est modéré. L'algorithme converge plus rapidement vers la solution optimale. C'est souvent un bon compromis entre vitesse et stabilité.
+    \item \textbf{$\eta = 0.5$ (droite) :} Le taux d'apprentissage est trop élevé. L'algorithme diverge et ne parvient pas à trouver un ajustement adéquat. Les lignes de régression s'éloignent des données, sautant d'un côté à l'autre sans converger.
+\end{itemize}
+Le choix du taux d'apprentissage est crucial pour la performance de la descente de gradient.
+
+\section{Perceptron et autres Classifieurs Linéaires}
+Après avoir exploré la régression pour les variables continues, nous nous tournons vers les classifieurs linéaires pour les problèmes de classification, où la variable de sortie est catégorique.
+
+\subsection{Approche Intuitive (2 variables)}
+Considérons un problème de classification simple avec deux variables (caractéristiques) et deux classes. Par exemple, nous pourrions avoir des données sur la "clarté" et la "longueur" de deux espèces de poissons. L'objectif est de trouver une ligne (ou un hyperplan) qui sépare au mieux ces deux classes.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{example-image-3} % This will be replaced by the image
+    \caption{Séparation de deux classes de poissons (points rouges et bleus) par une ligne droite. L'objectif est de trouver la meilleure "séparatrice".}
+\end{figure}
+La figure de la page 3 montre des points représentant des poissons, colorés en rouge et bleu, avec une ligne droite tentant de les séparer. La question clé est : "Comment trouver cette séparatrice ?" C'est précisément ce que les classifieurs linéaires comme le Perceptron s'efforcent de faire.
+
+\subsection{Le Perceptron}
+Le Perceptron, inventé par Frank Rosenblatt en 1957, est l'un des plus anciens et des plus simples algorithmes d'apprentissage automatique pour la classification binaire.
+
+\subsubsection{Historique et Contexte}
+Le Perceptron est un algorithme \textbf{ancien} mais fondamental. Il a été développé à une époque où l'intelligence artificielle était en plein essor. Frank Rosenblatt, un psychologue américain, a conçu le Perceptron comme un modèle simplifié du fonctionnement du cerveau.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{example-image-4} % This will be replaced by the image
+    \caption{Frank Rosenblatt, inventeur du Perceptron, devant son ordinateur Mark I Perceptron.}
+\end{figure}
+La figure de la page 4 montre Rosenblatt avec le "Mark I Perceptron", une machine conçue pour implémenter l'algorithme.
+
+\subsubsection{Idée Globale du Perceptron}
+L'algorithme du Perceptron repose sur une idée simple :
+\begin{itemize}
+    \item \textbf{Démarrage aléatoire :} On initialise les poids (paramètres) du modèle de manière aléatoire.
+    \item \textbf{Mises à jour correctives :} L'algorithme parcourt les données d'entraînement. Chaque fois qu'il fait une erreur de classification, il ajuste les poids du modèle pour corriger cette erreur.
+\end{itemize}
+
+\subsubsection{Classifieur à Fonction Discriminante Linéaire}
+Un classifieur linéaire utilise une fonction discriminante linéaire pour séparer les classes.
+\begin{itemize}
+    \item \textbf{Entrées} $\mathbf{x}^{(n)} = (x_d^{(n)})_{d \in [1, \dots, D]}$ sont les caractéristiques de l'exemple $n$. L'ensemble de données est $X = \{\mathbf{x}^{(n)}\}_{n \in [1, \dots, N]}$.
+    \item \textbf{Sorties} $t^{(n)} \in \{+1, -1\}$ sont les étiquettes de classe (connues, car il s'agit d'apprentissage supervisé).
+    \item \textbf{Tâche} : Classification binaire.
+    \item \textbf{Modèle} : Le Perceptron utilise un modèle linéaire $f_\mathbf{\theta}(\mathbf{x}^{(n)}) = \mathbf{\vec{w}} \cdot \mathbf{\vec{x}}^{(n)} + b$, où $\mathbf{\vec{w}}$ est le vecteur des poids et $b$ est le biais. Cela représente la distance d'un point à un hyperplan (la frontière de décision linéaire). On peut noter $\mathbf{\theta} = (b, \mathbf{\vec{w}})$.
+    \item \textbf{Prédiction} : La prédiction $\hat{y}^{(n)}$ est le signe de cette distance : $\hat{y}^{(n)} = \text{signe}(\mathbf{\vec{w}} \cdot \mathbf{\vec{x}}^{(n)} + b)$. Si $f_\mathbf{\theta}(\mathbf{x}^{(n)}) > 0$, la prédiction est $+1$; sinon, elle est $-1$.
+\end{itemize}
+Il est important de noter que le \textit{modèle} lui-même (la valeur réelle $\mathbf{\vec{w}} \cdot \mathbf{\vec{x}}^{(n)} + b$) est différent de la \textit{sortie/prédiction} (la valeur binaire $+1$ ou $-1$).
+
+\subsubsection{Quelques Intuitions (Page 6)}
+Pour comprendre le Perceptron, il est utile d'avoir quelques intuitions sur la fonction de coût :
+\begin{itemize}
+    \item La distance point-droite (ou hyperplan) est donnée par $(\mathbf{w} \cdot \mathbf{x} + b)$.
+    \item Un exemple est \textbf{bien classé} si le signe de $(\mathbf{w} \cdot \mathbf{x} + b)$ correspond à son étiquette réelle.
+    \item Un exemple est \textbf{mal classé} si le signe ne correspond pas. Plus la valeur $(\mathbf{w} \cdot \mathbf{x} + b)$ est éloignée de zéro (dans le mauvais sens), plus l'erreur est "grave".
+    \item Une astuce courante est d'utiliser la valeur $y \cdot (\mathbf{w} \cdot \mathbf{x} + b)$ où $y$ est l'étiquette réelle ($+1$ ou $-1$). Si l'exemple est bien classé, cette valeur est positive ; si mal classé, elle est négative.
+    \item \textbf{J1 = "nombre de points mal classés" } : C'est une fonction de coût simple mais non différentiable, ce qui la rend difficile à optimiser avec des méthodes basées sur le gradient.
+    \item \textbf{J2 = "somme des distances au plan des points mal classés" } : Cette fonction est une meilleure approche car elle est différentiable (ou du moins sous-différentiable) et prend en compte la "gravité" de l'erreur. C'est la base de la fonction de coût du Perceptron.
+\end{itemize}
+
+\subsubsection{Le Perceptron, vision réseau de Neurones / Optimisation}
+L'algorithme du Perceptron peut être vu comme une méthode de minimisation d'une fonction de coût $J(\mathbf{\theta})$.
+La fonction de coût utilisée par le Perceptron est souvent appelée la \textbf{fonction de coût de Hinge} (dans sa version simplifiée pour le Perceptron) :
+$$J(\mathbf{\theta}, X) = \sum_{n=1}^N \max(0, -(\mathbf{\vec{w}} \cdot \mathbf{\vec{x}}_n + b) t_n)$$
+où $t_n \in \{+1, -1\}$ est l'étiquette réelle de l'exemple $n$. Le terme $(\mathbf{\vec{w}} \cdot \mathbf{\vec{x}}_n + b) t_n$ est positif si l'exemple est bien classé et négatif si mal classé. On cherche donc à le maximiser. Par conséquent, minimiser $-\text{score} \cdot t_n$ revient à minimiser la \textit{perte} quand l'exemple est mal classé.
+\begin{itemize}
+    \item $\max(0, -(\mathbf{\vec{w}} \cdot \mathbf{\vec{x}}_n + b) t_n)$ vaut $0$ si l'exemple est bien classé (c'est-à-dire si $(\mathbf{\vec{w}} \cdot \mathbf{\vec{x}}_n + b) t_n > 0$).
+    \item $\max(0, -(\mathbf{\vec{w}} \cdot \mathbf{\vec{x}}_n + b) t_n)$ vaut $-(\mathbf{\vec{w}} \cdot \mathbf{\vec{x}}_n + b) t_n$ si l'exemple est mal classé (c'est-à-dire si $(\mathbf{\vec{w}} \cdot \mathbf{\vec{x}}_n + b) t_n \le 0$).
+\end{itemize}
+L'algorithme effectue une \textbf{descente de gradient} sur cette fonction de coût. Le gradient de $J(\mathbf{\theta}, X)$ par rapport aux paramètres $\mathbf{\theta}$ est :
+$$\nabla_\mathbf{\theta} J(\mathbf{\theta}, X) = -\sum_{n \in \text{exemples mal classés}} t_n \cdot \mathbf{\vec{x}}_n$$
+(en généralisant $\mathbf{x}_n$ pour inclure le terme de biais).
+
+L'équation de mise à jour des paramètres $\mathbf{\theta} = (b, \mathbf{\vec{w}})$ devient :
+$$\mathbf{\theta} := \mathbf{\theta} - \eta \nabla_\mathbf{\theta} J(\mathbf{\theta}, X)$$
+Ce qui se traduit pour un exemple mal classé $(\mathbf{x}_n, t_n)$ par :
+$$\mathbf{\theta} := \mathbf{\theta} + \eta t_n \mathbf{\vec{x}}_n$$
+Cette mise à jour ne se produit que pour les exemples mal classés.
+\begin{itemize}
+    \item Si $f_\mathbf{\theta}(\mathbf{x}_n) = \mathbf{\vec{w}} \cdot \mathbf{\vec{x}}_n + b$ et $t_n$ ont le même signe, l'exemple est \textbf{bien classé}, et il n'y a pas de mise à jour.
+    \item Si $f_\mathbf{\theta}(\mathbf{x}_n)$ est positive et $t_n = -1$ (mal classé comme positif), alors $\mathbf{\theta} := \mathbf{\theta} - \eta \mathbf{\vec{x}}_n$. Cela déplace l'hyperplan pour réduire la valeur de $f_\mathbf{\theta}(\mathbf{x}_n)$.
+    \item Si $f_\mathbf{\theta}(\mathbf{x}_n)$ est négative et $t_n = +1$ (mal classé comme négatif), alors $\mathbf{\theta} := \mathbf{\theta} + \eta \mathbf{\vec{x}}_n$. Cela déplace l'hyperplan pour augmenter la valeur de $f_\mathbf{\theta}(\mathbf{x}_n)$.
+\end{itemize}
+Comme indiqué sur la page 7 du PDF, cette fonction de coût $J$ diminue lorsque l'erreur diminue.
+
+\subsubsection{Algorithme du Perceptron (Online)}
+L'algorithme du Perceptron est souvent présenté comme un algorithme "Online" (en ligne), ce qui signifie qu'il met à jour ses paramètres après chaque exemple (ou un petit lot d'exemples).
+
+\textbf{Algorithme :}
+\begin{itemize}
+    \item \textbf{Initialiser} $\mathbf{\theta} = \mathbf{\theta}_0$ (généralement des poids aléatoires ou nuls).
+    \item Pour chaque exemple d'entraînement $(\mathbf{x}^{(n)}, t^{(n)})$ :
+        \begin{itemize}
+            \item Calculer la prédiction $\hat{y}^{(n)} = \text{signe}(\mathbf{\vec{w}} \cdot \mathbf{\vec{x}}^{(n)} + b)$.
+            \item \textbf{Si} $\hat{y}^{(n)} \neq t^{(n)}$ (c'est-à-dire, si l'exemple est mal classé) :
+                \begin{itemize}
+                    \item Mettre à jour les poids : $\mathbf{\theta} := \mathbf{\theta} + \eta t^{(n)} \mathbf{\vec{x}}^{(n)}$
+                \end{itemize}
+            \item \textbf{Sinon} (si l'exemple est bien classé) :
+                \begin{itemize}
+                    \item Rien (pas de mise à jour).
+                \end{itemize}
+        \end{itemize}
+    \item Répéter le processus pour plusieurs époques (passages complets sur l'ensemble des données d'entraînement) jusqu'à convergence ou un nombre maximal d'époques.
+\end{itemize}
+Le Perceptron est garanti de converger si les données sont linéairement séparables. Si elles ne le sont pas, l'algorithme ne converge pas et continuera d'osciller.
+
+\subsubsection{Non Séparabilité Linéaire}
+Un point important à considérer est la \textbf{séparabilité linéaire}.
+\begin{itemize}
+    \item \textbf{Vrai data set :} Dans la plupart des cas réels, les jeux de données ne sont pas parfaitement linéairement séparables. Cela signifie qu'il est impossible de trouver une droite ou un hyperplan qui sépare parfaitement toutes les classes sans aucune erreur. La page 13 du PDF illustre cette situation.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.7\textwidth]{example-image-13} % This will be replaced by the image
+        \caption{Exemple de données non linéairement séparables, où une droite ne peut pas séparer parfaitement les deux classes.}
+    \end{figure}
+    \item \textbf{En pratique :} Malgré cette limitation, le Perceptron peut s'en sortir "décemment" pour des données non linéairement séparables, même s'il ne convergera pas vers une solution parfaite et stable. Il trouvera une frontière de décision qui minimise les erreurs sur les données d'entraînement, mais il peut continuer à osciller.
+\end{itemize}
+
+\subsection{Stratégies d'Optimisation}
+La descente de gradient, comme appliquée au Perceptron, peut être implémentée avec différentes stratégies de mise à jour :
+\begin{itemize}
+    \item \textbf{Batch Gradient Descent (Descente de Gradient par Lot Complet) :} Utilise toutes les données d'entraînement pour calculer le gradient et mettre à jour les paramètres une seule fois par époque. La mise à jour est très stable mais peut être lente pour de grands ensembles de données. ($m=N$, où $N$ est la taille du dataset).
+    \item \textbf{Stochastic Gradient Descent (SGD) (Descente de Gradient Stochastique) :} Met à jour les paramètres après chaque exemple d'entraînement. C'est plus rapide pour les grands datasets mais les mises à jour sont plus "bruitées" et le chemin vers l'optimum est plus erratique. ($m=1$).
+    \item \textbf{Mini-batch Gradient Descent (Descente de Gradient par Mini-lot) :} Un compromis entre Batch et SGD. Les mises à jour sont effectuées après le traitement d'un petit lot ($m>1$) d'exemples. Cela réduit le bruit de SGD tout en restant plus rapide que Batch GD.
+\end{itemize}
+Le Perceptron tel que décrit ci-dessus est un exemple de SGD, car il met à jour les poids après chaque erreur, c'est-à-dire après avoir traité un seul exemple.
+
+La page 11 du PDF illustre les trajectoires de ces différentes stratégies dans l'espace des paramètres $\theta_0, \theta_1$.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{example-image-11} % This will be replaced by the image
+    \caption{Comparaison des trajectoires de SGD, Mini-batch et Batch Gradient Descent dans l'espace des paramètres. Le Batch est lisse, le Mini-batch est plus erratique, et le SGD est le plus bruité.}
+\end{figure}
+\textbf{Interprétation de la figure (page 11):}
+\begin{itemize}
+    \item \textbf{Batch (bleu) :} La trajectoire est très lisse et directe, car chaque étape est calculée en fonction du gradient moyen sur l'ensemble du dataset. Cela garantit une convergence stable vers le minimum global.
+    \item \textbf{Mini-batch (vert) :} La trajectoire est moins lisse que Batch, mais plus lisse que SGD. Elle présente des oscillations, mais se dirige globalement vers le minimum. C'est souvent le choix préféré en pratique.
+    \item \textbf{Stochastic (rouge) :} La trajectoire est très bruyante et erratique, effectuant de grands zigzags. Cependant, même avec ce bruit, elle tend à converger vers le minimum, et peut même aider à échapper aux minimums locaux dans des fonctions de coût plus complexes.
+\end{itemize}
+
+\subsection{Support Vector Machines (SVM)}
+Les Support Vector Machines (SVM) sont une autre classe de classifieurs linéaires (et non linéaires via les noyaux) très puissants. Contrairement au Perceptron qui vise à corriger les erreurs, les SVM cherchent à trouver la "meilleure" frontière de décision en maximisant la marge entre les classes.
+
+\subsubsection{Idée Principale : Maximiser la Marge}
+L'idée fondamentale des SVM est de construire un hyperplan qui sépare les classes avec la plus grande marge possible. La marge est la distance minimale entre l'hyperplan de séparation et les exemples les plus proches de chaque classe. Ces exemples les plus proches sont appelés les \textbf{vecteurs supports}.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{example-image-14} % This will be replaced by the image
+    \caption{Illustration d'un SVM avec un hyperplan séparateur et les vecteurs supports. La marge est la distance entre les deux hyperplans parallèles à la frontière de décision.}
+\end{figure}
+La figure de la page 14 illustre ceci :
+\begin{itemize}
+    \item L'hyperplan de décision (ligne noire) est au milieu des deux marges.
+    \item Les deux lignes parallèles (bleues et rouges) représentent les marges, définies par les vecteurs supports.
+    \item Les vecteurs supports sont les points de données les plus proches de l'hyperplan, et ce sont eux qui "soutiennent" la marge. En 2D, dans un cas séparable linéairement, il n'y a souvent que 2 ou 3 vecteurs supports qui définissent le plan séparateur.
+\end{itemize}
+
+\subsubsection{Gestion des Données Non-Séparables : La Marge Douce (Soft Margin)}
+Dans la réalité, les données ne sont pas toujours parfaitement séparables linéairement. Les SVM gèrent cela grâce à la notion de \textbf{marge douce} et aux variables d'écart ($\xi$).
+\begin{itemize}
+    \item Si un point est \textbf{bien classé et en dehors de la marge} : $\xi = 0$. Il n'y a pas de pénalité.
+    \item Si un point est \textbf{bien classé mais à l'intérieur de la marge} : $0 < \xi < 1$. L'algorithme tolère qu'il soit dans la marge, mais il y a une petite pénalité.
+    \item Si un point est \textbf{mal classé} (de l'autre côté de l'hyperplan) : $\xi > 1$. L'algorithme pénalise fortement cet exemple.
+\end{itemize}
+La fonction de coût d'un SVM inclut un terme de pénalité pour ces variables d'écart, contrôlé par un hyperparamètre $C$. Un $C$ élevé signifie une pénalité forte pour les erreurs, encourageant une marge plus dure ; un $C$ faible permet plus d'erreurs et une marge plus douce.
+Les points mal classés sont tous des vecteurs supports (ils influent sur l'hyperplan) et l'algorithme "paie un prix" pour eux via la fonction de coût.
+
+\section{Références}
+Pour approfondir les concepts abordés dans ce chapitre, les ressources suivantes sont recommandées :
+\begin{itemize}
+    \item \textbf{SVM :} \url{https://scikit-learn.org/stable/modules/svm.html}
+    \item \textbf{Livres :} Bishop, "Pattern Recognition and Machine Learning", chapitre 6, pages 325-345.
+    \item \textbf{En pratique (Scikit-learn) :}
+    \begin{itemize}
+        \item \textbf{Classification :}
+        \begin{itemize}
+            \item \url{https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html} (Linear Support Vector Classification)
+            \item \url{https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html} (Support Vector Classification)
+        \end{itemize}
+        \item \textbf{Régression :}
+        \begin{itemize}
+            \item \url{https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html} (Support Vector Regression)
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\end{document}

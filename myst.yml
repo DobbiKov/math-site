@@ -23,6 +23,7 @@ project:
     - file: statistical_learning/entry.md
       children: 
         - file: statistical_learning/lecture2.tex
+        - file: statistical_learning/lecture4.tex
     - title: Compilation
       children:
         - file: compilation/assembly-ops.md
