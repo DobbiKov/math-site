@@ -1,0 +1,93 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs}
+
+\begin{document}
+
+\begin{center}
+\textbf{DM2 - A rendre en TD mardi 30/9 ou vendredi 3/10}
+\end{center}
+
+\bigskip
+
+\noindent
+\textbf{Problème : Les statistiques d'ordre.} Soit $n \geq 1$ un entier fixé. Étant donné un $n$-uplet $(x_1, \dots, x_n)$ de nombres réels, nous le réordonnons pour obtenir le $n$-uplet $(x_{(1)}, \dots, x_{(n)})$ vérifiant
+\[
+x_{(1)} \leq x_{(2)} \leq \cdots \leq x_{(n)}.
+\]
+
+\noindent
+0) Que se passe-t-il si $x_1, \dots, x_n$ ne sont pas distincts ? Que valent $x_{(1)}$ et $x_{(n)}$ ?
+
+\bigskip
+
+\noindent
+\textbf{Partie I : Résultats généraux}
+
+\medskip
+
+\noindent
+Soit $\mu$ une loi de probabilité sur $\mathbb{R}$ qui est à densité, et soit $f$ une densité de $\mu$. Soit $X_1, \dots, X_n$ un échantillon de loi $\mu$, i.e., $X_1, \dots, X_n$ sont $n$ variables aléatoires définies sur un même espace de probabilité $(\Omega, \mathscr{F}, \mathbb{P})$, qui sont i.i.d. de loi $\mu$. Nous notons alors $(X_{(1)}, \dots, X_{(n)})$ le $n$-uplet obtenu en réordonnant $(X_1, \dots, X_n)$. La variable $X_{(k)}$ est appelée la $k$-ième statistique d’ordre d’un échantillon $X_1, \dots, X_n$.
+
+\medskip
+
+\noindent
+1) Quelle est la probabilité pour que deux v.a. parmi $X_1, \dots, X_n$ soient égales ?
+
+\medskip
+
+\noindent
+2) Notons $\mathfrak{S}_n$ le groupe symétrique des permutations de $\{1, \dots, n\}$. Montrez qu’avec probabilité $1$, il existe une unique permutation $\Sigma \in \mathfrak{S}_n$ telle que
+\[
+(X_{(1)}, \dots, X_{(n)}) = (X_{\Sigma(1)}, \dots, X_{\Sigma(n)}).
+\]
+
+\medskip
+
+\noindent
+3) La permutation $\Sigma$ définie en 2) est un élément aléatoire de $\mathfrak{S}_n$. Quelle est sa loi ?
+
+\medskip
+
+\noindent
+4) Soit $\phi$ une fonction continue bornée de $\mathbb{R}^n$ dans $\mathbb{R}$.
+
+\begin{itemize}
+    \item[a)] Montrez que
+    \[
+    \phi(X_{(1)}, \dots, X_{(n)}) = \sum_{\sigma \in \mathfrak{S}_n} \phi(X_{\sigma(1)}, \dots, X_{\sigma(n)}) \, 1_{\{ \Sigma = \sigma \}}.
+    \]
+
+    \item[b)] Montrez que, pour tout $\sigma$ dans $\mathfrak{S}_n$, $X_{\sigma(1)}, \dots, X_{\sigma(n)}$ est un échantillon de loi $\mu$ et que
+    \[
+    \mathbb{E}\!\left(\phi(X_{(1)}, \dots, X_{(n)}) \, 1_{\{ \Sigma = \sigma \}}\right)
+    = \mathbb{E}\!\left( \phi(X_1, \dots, X_n) \, 1_{\{ X_1 < \cdots < X_n \}} \right).
+    \]
+
+    \item[c)] Conclure finalement que
+    \[
+    \mathbb{E}(\phi(X_{(1)}, \dots, X_{(n)})) = n! \int_{\mathbb{R}^n} \phi(x_1, \dots, x_n) \, 1_{\{x_1 < \cdots < x_n\}} f(x_1) \cdots f(x_n) \, d\lambda(x_1) \cdots d\lambda(x_n).
+    \]
+\end{itemize}
+
+\medskip
+
+\noindent
+5) Soit $g$ une fonction continue bornée de $\mathbb{R}$ dans $\mathbb{R}$. En appliquant la question 4) avec une fonction $\phi$ bien choisie, montrez que, pour tout $1 \leq k \leq n$,
+\[
+\mathbb{E}(g(X_{(k)})) = \frac{n!}{(k-1)! (n-k)!} \int_{\mathbb{R}} g(x) \, \bigg( \int_{-\infty}^x f(t) \, d\lambda(t) \bigg)^{k-1} \bigg( \int_{x}^{+\infty} f(t) \, d\lambda(t) \bigg)^{n-k} f(x) \, d\lambda(x).
+\]
+
+\noindent
+En déduire que la loi de $X_{(k)}$ admet une densité que l’on explicitera.
+
+\bigskip
+
+\noindent
+\emph{Anytime you have a 50-50 shot at getting something right,\\
+there’s a 90\% probability you’ll get it wrong.}
+\hfill \emph{Andy Rooney}
+
+\end{document}
+
