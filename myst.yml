@@ -20,6 +20,9 @@ project:
           children:
             - file: probas/tds/td3.tex
             - file: probas/tds/td4.tex
+        - title: DMs
+          children: 
+            - file: probas/DMs/dm2.tex
     - file: statistical_learning/entry.md
       children: 
         - file: statistical_learning/lecture2.tex
