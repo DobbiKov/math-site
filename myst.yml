@@ -9,6 +9,7 @@ project:
   github: https://github.com/DobbiKov/math-site
   toc:
     - file: README.md
+    - file: resources.md
     - file: probas/probas.md
       children:
         - file: probas/neg_hypergeometric.tex
@@ -35,6 +36,24 @@ project:
         - title: Analysis
           children: 
             - file: archives/analysis/resources.md
+        - title: Abstract algebra
+          children: 
+            - file: archives/abstract-algebra/resources.md
+        - title: Linear algebra
+          children: 
+            - file: archives/linear-algebra/resources.md
+        - title: Topology / Analyse et Géomètrie
+          children: 
+            - file: archives/topology/resources.md
+        - title: Probability and Statistics
+          children: 
+            - file: archives/probability-stats/resources.md
+
+        - title: Computer Science
+          children: 
+            - file: archives/informatics/resources.md
+             
+
   # To autogenerate a Table of Contents, run "myst init --write-toc"
 site:
   template: book-theme
