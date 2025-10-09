@@ -31,6 +31,9 @@ project:
     - title: Compilation
       children:
         - file: compilation/assembly-ops.md
+    - file: logics/main.md
+      children:
+        - file: logics/implication.md
     - title: Archives
       children:
         - title: Analysis
