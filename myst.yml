@@ -30,6 +30,7 @@ project:
         - file: statistical_learning/lecture4.tex
     - title: Compilation
       children:
+        - file: compilation/partiel.md
         - file: compilation/assembly-ops.md
     - file: logics/main.md
       children:
