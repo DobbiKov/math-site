@@ -4,4 +4,7 @@ This is my site where I add my notes, thoughts, cheatsheets and explanations. I 
 Access the site: [notes](https://dobbikov.github.io/math-site/)
 
 ## ToC
+- [resources](./resources.md)
 - [probas](./probas/probas.md)
+- [logics](./logics/main.md)
+- [compilation](./compilation)
