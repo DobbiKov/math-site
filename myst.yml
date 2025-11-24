@@ -12,6 +12,7 @@ project:
     - file: resources.md
     - file: probas/probas.md
       children:
+        - file: probas/fiches-memoires.md
         - file: probas/neg_hypergeometric.tex
         - file: probas/pgf.tex
         - file: probas/tds.md
