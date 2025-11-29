@@ -89,3 +89,40 @@ Il y a équivalence entre :
         \lim_{n \to \infty} \varphi_{X_n}(u) = \varphi_X(u).
     ````
 :::
+
+
+
+
+:::{admonition} Approximation binomiale–Poisson
+:class: dropdown
+
+Soit $n \ge 1$ \text{et} $\lambda \ge 0$.
+Soient $X^{(n)}_1, \ldots, X^{(n)}_n$ des v.a. i.i.d. qui suivent la loi de Bernoulli
+de paramètre $\lambda/n$ sur $\{0,1\}$. Posons
+````{math}
+N_n = X^{(n)}_1 + \cdots + X^{(n)}_n.
+````
+
+La loi de $N_n$ est la loi binomiale $B(n, \lambda/n)$,
+elle converge quand $n \to \infty$ vers $\mathcal{P}(\lambda)$, i.e.,
+````{math}
+\forall k \in \mathbb{N}, \qquad 
+\lim_{n \to \infty} \mathbb{P}(N_n = k)
+    = e^{-\lambda} \frac{\lambda^k}{k!}.
+````
+:::
+
+:::{admonition} Le processus de Poisson
+:class: dropdown
+
+Soient $\lambda \ge 0$ et $(Y_n)_{n \ge 1}$ une suite de v.a. i.i.d. qui suivent la loi $\mathrm{Exp}(\lambda)$.
+Posons $S_0 = 0$ et, $\forall n \ge 1$,
+````{math}
+S_n = Y_1 + \cdots + Y_n.
+````
+
+Le processus de Poisson de paramètre \(\lambda\) est la fonction aléatoire définie par
+````{math}
+\forall t \in \mathbb{R}^+, \qquad N(t) = \max\{ n \in \mathbb{N} : S_n \le t \}.
+````
+:::
