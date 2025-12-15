@@ -10,6 +10,7 @@ project:
   toc:
     - file: README.md
     - file: resources.md
+    - file: measure-theory/mct-proof.md
     - file: probas/probas.md
       children:
         - file: probas/fiches-memoires.md
@@ -62,6 +63,10 @@ project:
              
 
   # To autogenerate a Table of Contents, run "myst init --write-toc"
+myst:
+  enable_extensions:
+    - amsmath
+    - dollarmath
 site:
   template: book-theme
   # options:
