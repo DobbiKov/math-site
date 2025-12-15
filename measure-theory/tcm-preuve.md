@@ -19,8 +19,8 @@ On vous donne :
 On veut prouver :
 
 
-\lim_{n \to \infty} \int_X f_n \, d\lambda = \int_X f \, d\lambda.
-^^^math_blockCeci se divise en **deux inégalités** :
+$$ \lim_{n \to \infty} \int_X f_n \, d\lambda = \int_X f \, d\lambda. $$
+Ceci se divise en **deux inégalités** :
 
 1. $ \displaystyle \lim \int f_n \le \int f $ (facile)
 2. $ \displaystyle \int f \le \lim \int f_n $ (difficile)
