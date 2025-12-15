@@ -10,7 +10,12 @@ project:
   toc:
     - file: README.md
     - file: resources.md
-    - file: measure-theory/mct-proof.md
+    - title: Measure Theory and Integration
+      children: 
+        - title: MCT proof
+          file: measure-theory/mct-proof.md
+        - title: TCM preuve
+          file: measure-theory/tcm-preuve.md
     - file: probas/probas.md
       children:
         - file: probas/fiches-memoires.md
