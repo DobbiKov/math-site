@@ -16,3 +16,11 @@
 - [Computer Science](archives/informatics/resources.md)
 
 ## My Third Year
+
+- [Compilators](compilation/resources.md)
+- [Logics](logics/resources.md)
+- [Measure Theory](measure-theory/resources.md)
+- [Optimisation and Differential Calculations](optimisation/resources.md)
+- [Probability Theory](probas/resources.md)
+- [Machine Learning (IAS)](statistical_learning/resources.md)
+
