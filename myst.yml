@@ -10,14 +10,20 @@ project:
   toc:
     - file: README.md
     - file: resources.md
+    - title: Differential Calculus and Optimisation
+      children:
+        - file: optimisation/resources.md
     - title: Measure Theory and Integration
       children: 
+        - title: Resources
+          file: measure-theory/resources.md
         - title: MCT proof
           file: measure-theory/mct-proof.md
         - title: TCM preuve
           file: measure-theory/tcm-preuve.md
     - file: probas/probas.md
       children:
+        - file: probas/resources.md
         - file: probas/fiches-memoires.md
         - file: probas/neg_hypergeometric.tex
         - file: probas/pgf.tex
@@ -34,14 +40,17 @@ project:
             - file: probas/DMs/dm2.tex
     - file: statistical_learning/entry.md
       children: 
+        - file: statistical_learning/resources.md
         - file: statistical_learning/lecture2.tex
         - file: statistical_learning/lecture4.tex
     - title: Compilation
       children:
+        - file: compilation/resources.md
         - file: compilation/partiel.md
         - file: compilation/assembly-ops.md
     - file: logics/main.md
       children:
+        - file: logics/resources.md
         - file: logics/implication.md
         - file: logics/parantheses-priorities.md
     - title: Archives
