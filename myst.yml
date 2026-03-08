@@ -53,6 +53,9 @@ project:
         - file: logics/resources.md
         - file: logics/implication.md
         - file: logics/parantheses-priorities.md
+    - title: Droit
+      children:
+        - file: droit/fiche-memoire.md
     - title: Archives
       children:
         - title: Analysis
