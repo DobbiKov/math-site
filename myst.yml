@@ -10,6 +10,9 @@ project:
   toc:
     - file: README.md
     - file: resources.md
+    - title: Differential Equations
+      children: 
+        - file: equa-diff/resources.md
     - title: Differential Calculus and Optimisation
       children:
         - file: optimisation/resources.md
