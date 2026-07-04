@@ -24,6 +24,7 @@ I don't have much resources for this course. I didn't find resources that would
 cover our course, thus I just prepared by labs and past exams.
 
 - [playlist](https://www.youtube.com/playlist?list=PLDV1Zeh2NRsDfGc8rbQ0_58oEZQVtvoIc) - visual explanations of algorithms.
+- [playlist](https://www.youtube.com/playlist?list=PLpXOY-RxVRTPPVLBP6-sz6CMWxhtrI-v_) - deep high quality graphs
 
 ## Graphical Programming 
 - [Computerphile](https://www.youtube.com/@Computerphile) - just look for videos you need on this channel, usually they explain all you need.
