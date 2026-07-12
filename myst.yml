@@ -64,6 +64,8 @@ project:
         - file: droit/fiche-memoire.md
     - title: Archives
       children:
+        - title: L1-Maths
+          file: archives/l1-math.md
         - title: Analysis
           children: 
             - file: archives/analysis/resources.md
