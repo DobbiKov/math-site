@@ -2,95 +2,101 @@
 version: 1
 project:
   id: 4a9008a4-de1e-4248-a4c7-c5b242a68b05
-  title: My Math Notes
-  # description:
-  # keywords: []
+  title: Yehor's Math & CS Notes
+  description: >-
+    Curated learning resources, cheatsheets and worked notes in mathematics and
+    computer science — organised by subject and mapped to the LDD Maths-Info
+    (Paris-Saclay) curriculum.
+  keywords:
+    - mathematics
+    - computer science
+    - learning resources
+    - LDD Maths-Info
+    - Paris-Saclay
+    - measure theory
+    - probability
+    - optimisation
   authors: [Yehor Korotenko]
   github: https://github.com/DobbiKov/math-site
   toc:
     - file: README.md
     - file: resources.md
-    - title: Differential Equations
-      children: 
-        - file: equa-diff/resources.md
-    - title: Computational Linear Algebra
+    - title: First-Year Foundations
+      file: archives/l1-math.md
+    - title: Analysis & Calculus
       children:
-        - file: linear-algebra-for-numerical-analysis/resources.md
-    - title: Statistical Inference
-      children:
-        - file: statistical_inference/resources.md
-      children:
-        - file: linear-algebra-for-numerical-analysis/resources.md
-    - title: Differential Calculus and Optimisation
-      children:
-        - file: optimisation/resources.md
-    - title: Measure Theory and Integration
-      children: 
-        - title: Resources
-          file: measure-theory/resources.md
-        - title: MCT proof
-          file: measure-theory/mct-proof.md
-        - title: TCM preuve
-          file: measure-theory/tcm-preuve.md
-    - file: probas/probas.md
-      children:
-        - file: probas/resources.md
-        - file: probas/fiches-memoires.md
-        - file: probas/neg_hypergeometric.tex
-        - file: probas/pgf.tex
-        - file: probas/tds.md
-        - file: probas/resources.md
-        - file: probas/montrer-qqch-de-probabilite-1.md
-        - file: probas/uniform-normal-transform.md
-        - title: TDS
-          children:
-            - file: probas/tds/td3.tex
-            - file: probas/tds/td4.tex
-        - title: DMs
-          children: 
-            - file: probas/DMs/dm2.tex
-    - file: statistical_learning/entry.md
-      children: 
-        - file: statistical_learning/resources.md
-        - file: statistical_learning/lecture2.tex
-        - file: statistical_learning/lecture4.tex
-    - title: Compilation
-      children:
-        - file: compilation/resources.md
-        - file: compilation/partiel.md
-        - file: compilation/assembly-ops.md
-    - file: logics/main.md
-      children:
-        - file: logics/resources.md
-        - file: logics/implication.md
-        - file: logics/parantheses-priorities.md
-    - title: Droit
-      children:
-        - file: droit/fiche-memoire.md
-    - title: Archives
-      children:
-        - title: L1-Maths
-          file: archives/l1-math.md
         - title: Analysis
-          children: 
-            - file: archives/analysis/resources.md
-        - title: Abstract algebra
-          children: 
-            - file: archives/abstract-algebra/resources.md
-        - title: Linear algebra
-          children: 
-            - file: archives/linear-algebra/resources.md
-        - title: Topology / Analyse et Géomètrie
-          children: 
-            - file: archives/topology/resources.md
-        - title: Probability and Statistics
-          children: 
-            - file: archives/probability-stats/resources.md
-
-        - title: Computer Science
-          children: 
-            - file: archives/informatics/resources.md
-             
+          file: archives/analysis/resources.md
+        - title: Measure Theory & Integration
+          children:
+            - file: measure-theory/resources.md
+            - title: MCT proof
+              file: measure-theory/mct-proof.md
+            - title: TCM preuve
+              file: measure-theory/tcm-preuve.md
+        - title: Differential Equations
+          file: equa-diff/resources.md
+        - title: Topology / Analyse et Géométrie
+          file: archives/topology/resources.md
+    - title: Algebra & Linear Algebra
+      children:
+        - title: Abstract Algebra
+          file: archives/abstract-algebra/resources.md
+        - title: Linear Algebra
+          file: archives/linear-algebra/resources.md
+        - title: Computational Linear Algebra
+          file: linear-algebra-for-numerical-analysis/resources.md
+    - title: Probability & Statistics
+      children:
+        - file: probas/probas.md
+          children:
+            - file: probas/resources.md
+            - file: probas/fiches-memoires.md
+            - file: probas/montrer-qqch-de-probabilite-1.md
+            - file: probas/uniform-normal-transform.md
+            - file: probas/tds.md
+            - title: TDs
+              children:
+                - file: probas/tds/td3.tex
+                - file: probas/tds/td4.tex
+            - title: DMs
+              children:
+                - file: probas/DMs/dm2.tex
+            - title: Cheatsheets & extras
+              children:
+                - file: probas/neg_hypergeometric.tex
+                - file: probas/pgf.tex
+        - title: Statistical Inference
+          file: statistical_inference/resources.md
+        - title: Probability & Statistics (intro)
+          file: archives/probability-stats/resources.md
+    - title: Optimisation & Differential Calculus
+      file: optimisation/resources.md
+    - title: Computer Science
+      children:
+        - file: logics/main.md
+          children:
+            - file: logics/resources.md
+            - file: logics/implication.md
+            - file: logics/parantheses-priorities.md
+        - title: Compilation
+          children:
+            - file: compilation/resources.md
+            - file: compilation/partiel.md
+            - file: compilation/assembly-ops.md
+        - title: Distributed Algorithms
+          file: distributed-algorithms/resources.md
+        - file: statistical_learning/entry.md
+          children:
+            - file: statistical_learning/resources.md
+            - file: statistical_learning/lecture2.tex
+            - file: statistical_learning/lecture4.tex
+        - title: Computer Science (intro)
+          file: archives/informatics/resources.md
+    - title: Electives
+      children:
+        - title: Droit (Law)
+          file: droit/fiche-memoire.md
 
   # To autogenerate a Table of Contents, run "myst init --write-toc"
 myst:
