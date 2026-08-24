@@ -121,7 +121,7 @@ Posons $S_0 = 0$ et, $\forall n \ge 1$,
 S_n = Y_1 + \cdots + Y_n.
 ````
 
-Le processus de Poisson de paramètre \(\lambda\) est la fonction aléatoire définie par
+Le processus de Poisson de paramètre $\lambda$ est la fonction aléatoire définie par
 ````{math}
 \forall t \in \mathbb{R}^+, \qquad N(t) = \max\{ n \in \mathbb{N} : S_n \le t \}.
 ````
