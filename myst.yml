@@ -16,6 +16,11 @@ project:
     - title: Computational Linear Algebra
       children:
         - file: linear-algebra-for-numerical-analysis/resources.md
+    - title: Statistical Inference
+      children:
+        - file: statistical_inference/resources.md
+      children:
+        - file: linear-algebra-for-numerical-analysis/resources.md
     - title: Differential Calculus and Optimisation
       children:
         - file: optimisation/resources.md
