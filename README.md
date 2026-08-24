@@ -29,6 +29,13 @@ Most pages are **resource lists**; some also contain my own worked notes and pro
 
 If you're following the LDD Maths-Info programme, here is the same material laid out **by year**, in roughly the order you'll meet it.
 
+:::{tip} TDs et leurs corrigés
+I keep a separate archive of **TD exercise sheets, past exams (*partiels*), and some worked solutions and lecture notes**, organised by semester (S3–S6):
+**[Yehor's Licence TDs →](https://dobbikov.github.io/yehor-tds-licence/)**
+
+It covers many of the courses below — linear algebra, analysis, integration, probability & statistics, statistical inference, differential equations, optimisation, compilation, logic and IAS.
+:::
+
 ### Year 1 — L1 (Portail)
 - [First-Year Foundations](archives/l1-math.md) — how to build intuition before the formalism.
 
