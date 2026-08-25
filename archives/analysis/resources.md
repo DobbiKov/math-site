@@ -1,4 +1,5 @@
 # Resources for analysis
+(AKA *Analyse et Convergence*)
 
 ## Nice resources
 - [paul online notes](https://tutorial.math.lamar.edu/Classes/CalcII/CalcII.aspx) -
@@ -15,3 +16,8 @@
 
 ### Séries entières
 - [maths adultes](https://www.youtube.com/playlist?list=PLE8WtfrsTAilHna8z3mByLV9gOi4iWXdI) - of course, he is also the legend.
+
+## Done by Yehor
+- [Intégrales CheatSheet](https://drive.google.com/file/d/1Ne14dOmvbHC0WEPSbMriod0t-7PztptM/view?usp=sharing)
+- [Développements Limités CheatSheet](https://drive.google.com/file/d/1LFiR_cDE6edQTbklOmTw2UpFh_z1izMi/view?usp=sharing)
+- [Double Integrals by University of Durham](https://drive.google.com/file/d/1-IUDLfW844NB9yGFQ6aBmcqk9HAz34ZH/view)

@@ -8,3 +8,5 @@ Resources to study topology.
 ## Books
 - [notes in French](https://dobbikov.github.io/semester4-lecture-notes/analyse.pdf)
 - [notes in English](https://dobbikov.github.io/semester4-lecture-notes/analyse_en.pdf)
+- [notes in Ukrainian](https://dobbikov.github.io/semester4-lecture-notes/analyse_ua.pdf)
+- [cheatsheet](https://dobbikov.github.io/semester4-lecture-notes/analyse_cheatsheet.pdf)

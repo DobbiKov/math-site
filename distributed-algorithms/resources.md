@@ -11,3 +11,12 @@
     - [quite old video](https://www.youtube.com/watch?v=wx0NyUfpm48)
     - [Lamport video](https://www.youtube.com/watch?v=q_UZ532Os14&sttick=0)
 
+- CheatSheet for LDD IM
+    - [Partie Code](https://dobbikov.github.io/semester6-lecture-notes/algo-cheatsheet.pdf)
+    - [Partie Théorique](https://dobbikov.github.io/semester6-lecture-notes/final-cheatsheet-algo.pdf)
+
+- Poly
+    - [Interactive site covering all the course](https://dobbikov.github.io/semester6-lecture-notes/algo.html)
+    - [Poly du Cours](https://dobbikov.github.io/semester6-lecture-notes/poly-algo.pdf)
+    - [Poly du Cours en format Web](https://korotenky.com/share/algo-poly)
+

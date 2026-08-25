@@ -17,6 +17,11 @@ Here I share resources I found useful for me.
 - [Cache Lack Math course](https://www.youtube.com/watch?v=qnVZku1_a3Q) = I don't have any opinion on that course.
 - [Rigourous probability courses (beginner and advances courses)](https://www.youtube.com/@toddkemp-probability)
 
+## CheatSheets for LDD IM
+- [CheatSheet des lois continues](https://dobbikov.github.io/semester5-lecture-notes/probas_cheatsheet.pdf)
+- [CheatSheet du cours](https://dobbikov.github.io/semester5-lecture-notes/probas_full_cheatsheet.pdf)
+- [Poly du Cours](https://korotenky.com/share/probas-mdd303-fr.pdf)
+
 
 ## Themes
 

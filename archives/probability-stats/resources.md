@@ -17,3 +17,7 @@ Resources to study probability and statistics (mostly discrete probability).
 - [Steve
   Brunton](https://www.youtube.com/playlist?list=PLMrJAkhIeNNR3sNYvfgiKgcStwuPSts9V)
   also explains everything clearly with intuition, short videos.
+
+## CheatSheets
+- [short cheatsheet](https://drive.google.com/file/d/11t-5UA9UeiMGsyvyqo-4vrUK4Q1v1rS2/view?usp=sharing)
+- [long cheatsheet](https://drive.google.com/file/d/11vh_yhZQLm2OBFj_3HfNPr5P8NHM-Q6o/view?usp=sharing)

@@ -1,6 +1,7 @@
 # Differential Equations Resources
 
 - [Lyapunov Stability Visual Video](https://www.youtube.com/watch?v=W8YpgG0KuOo&t=889s)
+- [LDD IM CheatSheet](https://dobbikov.github.io/semester6-lecture-notes/equa-diff-cheatsheet.pdf)
 
 ## Courses and Playlists
 - [Steve Brunton](https://www.youtube.com/playlist?list=PLMrJAkhIeNNTYaOnVI3QpH7jgULnAmvPA) - one of the best existing math teachers on YouTube.

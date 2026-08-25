@@ -24,7 +24,10 @@ Worth mentioning:
 ## Books
 - [french notes](https://dobbikov.github.io/semester4-lecture-notes/linalg.pdf)
 - [english notes](https://dobbikov.github.io/semester4-lecture-notes/linalg_en.pdf)
-- Algèbre Linéaire by Joseph Grifone
+- *Algèbre Linéaire by Joseph Grifone* - le meilleur livre en Français pour
+  l'algèbre linéaire. Vous pouvez le trouver au lumen ou à la BU d'Orsay (il
+  y'en a 15 je pense).
+- [cheatsheet](https://dobbikov.github.io/semester4-lecture-notes/linalg_cheatsheet.pdf)
 
 ## Other
 

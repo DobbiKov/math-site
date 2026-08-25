@@ -46,6 +46,7 @@ It covers many of the courses below — linear algebra, analysis, integration, p
 - [Topology / Analyse et Géométrie](archives/topology/resources.md)
 - [Probability & Statistics (intro)](archives/probability-stats/resources.md)
 - [Computer Science (intro)](archives/informatics/resources.md)
+- [Analyse Numérique avec Python](archives/analyse-numerique-avec-python.md)
 
 ### Year 3 — L3
 - [Measure Theory & Integration](measure-theory/resources.md)

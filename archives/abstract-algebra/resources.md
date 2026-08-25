@@ -1,6 +1,8 @@
 # Resources
 Resources to study abstract algebra (structure algebrique).
 
+- [LLD IM algèbre cheatsheet](https://drive.google.com/file/d/1VHpo11NGR3C8wvPGgpxFLdI5kw3ukSgJ/view?usp=sharing)
+
 - [long playlist](https://www.youtube.com/playlist?list=PLL0ATV5XYF8AQZuEYPnVwpiFy0jEipqN-)
     short video with explanations, good to acquire understanding and intuition.
 
@@ -16,6 +18,8 @@ Resources to study abstract algebra (structure algebrique).
 - [Another playlist](https://www.youtube.com/playlist?list=PLl-gb0E4MII1YlnI7OBsUHQ5E42RA-ZVI) - I didn't really use it but it may help someone.
 
 - [partial fractions explanation](https://www.mathsisfun.com/algebra/partial-fractions.html)
+- [fractions de polynomes](https://drive.google.com/file/d/1-37E1hT6IRQinj6MF9xgB3OZOfYU-wRe/view?usp=sharing)
+
 
 ## Michael Penn
 This guy is genius. We loved him when we studied abstract algebra and we love
@@ -36,3 +40,8 @@ And now, his playlists I used:
 I genuinely recommend to take at look at playlists on both of his channels,
 because there are themes that are covered in other playlists, or where he
 provides more examples.
+
+## For LDD IM - Complex Numbers
+- [cheatsheet](https://drive.google.com/file/d/1fqTRJaABhSIw-vXjtfor1HZXB6Ziuzpm/view?usp=sharing)
+- [TD](https://drive.google.com/file/d/1MQPJjuMo7m_tKozIy22ErcghJ6_X14mW/view?usp=sharing) pour pratiquer
+- [Solution de TD](https://drive.google.com/file/d/1n8Np5OCYuk_blS_GDlwNadgkGDEYKSzU/view?usp=sharing)

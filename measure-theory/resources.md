@@ -17,6 +17,11 @@ The two resources I used all the time were:
   Marçay](https://www.imo.universite-paris-saclay.fr/~joel.merker/Enseignement/Integration/theorie-de-la-mesure.pdf)
   = very rigorous with many visual explanations notes on measure theory.
 - [just some video lectures on measure theory](https://www.youtube.com/watch?v=6ad9V8gvyBQ) = I didn't watch it but someone might find that useful.
+- Charatéodory criterion explanation
+    - [in English](https://dobbikov.github.io/semester5-lecture-notes/measure-theory-caratheodory-criterion-en.pdf)
+    - [en Français](https://dobbikov.github.io/semester5-lecture-notes/measure-theory-caratheodory-criterion-fr.pdf)
+- [CheatSheet en Français](https://dobbikov.github.io/semester5-lecture-notes/measure-theory-cheatsheet-fr.pdf)
+- [CheatSheet in English](https://dobbikov.github.io/semester5-lecture-notes/measure-theory-cheatsheet-en.pdf)
 
 ## Introductory level resources
 - [understanding measure theory (for big picture)](https://www.youtube.com/watch?v=gHUZFXvy4yE)

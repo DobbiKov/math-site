@@ -22,3 +22,7 @@
   optimisation](https://www.youtube.com/playlist?list=PLcjqUUQt__ZE0ZSTNRyBIgLJ5obPHdmxC)
   = didn't find them useful but may be a format for someone.
 - [convex optimisation lectures](https://www.youtube.com/playlist?list=PL3940DD956CDF0622)
+
+## CheatSheets for LDD IM
+- [CheatSheet pour partiel](https://dobbikov.github.io/semester5-lecture-notes/optimisation_cheatsheet.pdf)
+- [CheatSheet pour tout le cours](https://dobbikov.github.io/semester5-lecture-notes/optimisation_cheatsheet_full.pdf)
