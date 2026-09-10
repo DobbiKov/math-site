@@ -66,3 +66,6 @@ It covers many of the courses below — linear algebra, analysis, integration, p
 ## Contributing
 
 This site aims to become a useful collection of mathematics and CS resources for a broad audience. Ideas, corrections and contributions are very welcome — open an issue or a pull request on [GitHub](https://github.com/DobbiKov/math-site).
+
+## Other
+- [Tutoriel pour ajouter compte de Polytechnique dans Spark](other/x-mel-spark.md)

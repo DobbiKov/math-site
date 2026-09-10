@@ -98,6 +98,10 @@ project:
         - title: Droit (Law)
           file: droit/fiche-memoire.md
 
+    - title: Other
+      children:
+        - title: Ajouter compte de l'X à Spark
+          file: other/x-mel-spark.md
   # To autogenerate a Table of Contents, run "myst init --write-toc"
 myst:
   enable_extensions:
